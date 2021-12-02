@@ -9,13 +9,13 @@ namespace Day01
         public static void Main(string[] args)
         {
             var solver = new Solver();
-            solver.SolveProblemA();
-            solver.SolveProblemB();
+            Console.WriteLine(solver.SolveProblemA());
+            Console.WriteLine(solver.SolveProblemB());
         }
 
-        private class Solver : IAdventOfCodeSolver
+        private class Solver : IAdventOfCodeSolver<int>
         {
-            public void SolveProblemA()
+            public int SolveProblemA()
             {
                 var lines = AdventOfCode.ReadInputAsInt().ToList();
 
@@ -31,10 +31,10 @@ namespace Day01
                     previous = line;
                 }
 
-                Console.WriteLine(depthIncreases);
+                return depthIncreases;
             }
 
-            public void SolveProblemB()
+            public int SolveProblemB()
             {
                 var lines = AdventOfCode.ReadInputAsInt().ToArray();
                 var endOfLine = lines.Length - 2;
@@ -47,12 +47,10 @@ namespace Day01
                     {
                         depthIncreases++;
                     }
-
-                    Console.WriteLine($"{i}: {line} {depthIncreases}");
                     previous = line;
                 }
 
-                Console.WriteLine(depthIncreases);
+                return depthIncreases;
             }
         }
     }

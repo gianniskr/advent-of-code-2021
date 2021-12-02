@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -6,8 +7,12 @@ namespace Common
 {
     public interface IAdventOfCodeSolver
     {
-        void SolveProblemA();
-        void SolveProblemB();
+    }
+
+    public interface IAdventOfCodeSolver<T> : IAdventOfCodeSolver
+    {
+        T SolveProblemA();
+        T SolveProblemB();
     }
 
     public static class AdventOfCode
