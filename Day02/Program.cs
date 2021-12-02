@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Common;
 
 namespace Day02
@@ -16,12 +19,62 @@ namespace Day02
         {
             public int SolveProblemA()
             {
-                throw new System.NotImplementedException();
+                var lines = AdventOfCode.ReadInput().Select(ParseInstructions).ToList();
+                var position = 0;
+                var depth = 0;
+                foreach (var valueTuple in lines)
+                {
+                    switch (valueTuple.Item1)
+                    {
+                        case "forward":
+                            position = position + valueTuple.Item2;
+                            break;
+                        case "up":
+                            depth = depth - valueTuple.Item2;
+                            break;
+                        case "down":
+                            depth = depth + valueTuple.Item2;
+                            break;
+                        default:
+                            throw new Exception("unknown command");
+                    }
+                }
+
+                return position * depth;
             }
 
             public int SolveProblemB()
             {
-                throw new System.NotImplementedException();
+                var lines = AdventOfCode.ReadInput().Select(ParseInstructions).ToList();
+                var position = 0;
+                var depth = 0;
+                var aim = 0;
+                foreach (var valueTuple in lines)
+                {
+                    switch (valueTuple.Item1)
+                    {
+                        case "forward":
+                            position = position + valueTuple.Item2;
+                            depth = depth + aim * valueTuple.Item2;
+                            break;
+                        case "up":
+                            aim = aim - valueTuple.Item2;
+                            break;
+                        case "down":
+                            aim = aim + valueTuple.Item2;
+                            break;
+                        default:
+                            throw new Exception("unknown command");
+                    }
+                }
+
+                return position * depth;
+            }
+
+            private (string, int) ParseInstructions(string line)
+            {
+                var res = line.Split(' ');
+                return (res[0], int.Parse(res[1]));
             }
         }
     }
