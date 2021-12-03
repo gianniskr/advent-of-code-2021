@@ -15,7 +15,7 @@ namespace Day02
             Console.WriteLine(solver.SolveProblemB());
         }
 
-        private class Solver : IAdventOfCodeSolver<int>
+        private class Solver : IAdventOfCodeSolver
         {
             public int SolveProblemA()
             {

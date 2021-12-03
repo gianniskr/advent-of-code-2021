@@ -7,12 +7,8 @@ namespace Common
 {
     public interface IAdventOfCodeSolver
     {
-    }
-
-    public interface IAdventOfCodeSolver<T> : IAdventOfCodeSolver
-    {
-        T SolveProblemA();
-        T SolveProblemB();
+        int SolveProblemA();
+        int SolveProblemB();
     }
 
     public static class AdventOfCode
@@ -28,10 +24,10 @@ namespace Common
             return lines.Select(int.Parse).ToList();
         }
 
-        public static IEnumerable<int> ReadInputAsLong()
+        public static IEnumerable<long> ReadInputAsLong()
         {
             var lines = File.ReadLines($"input.txt");
-            return lines.Select(int.Parse);
+            return lines.Select(long.Parse);
         }
     }
 }
